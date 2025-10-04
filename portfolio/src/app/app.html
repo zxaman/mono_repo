@@ -1,0 +1,182 @@
+<!-- Main Container -->
+<div class="showcase-container">
+  
+  <!-- Input Fields Showcase -->
+  <section class="input-showcase">
+    <h2>Input Fields</h2>
+
+    <!-- Text Input -->
+    <div class="input-group">
+      <h3>Text Input</h3>
+      <lib-input
+        type="text"
+        label="Username"
+        placeholder="Enter your username"
+        [required]="true"
+        [(value)]="formData.username">
+      </lib-input>
+    </div>
+
+    <!-- Password Input -->
+    <div class="input-group">
+      <h3>Password Input</h3>
+      <lib-input
+        type="password"
+        label="Password"
+        placeholder="Enter your password"
+        [required]="true"
+        [(value)]="formData.password">
+      </lib-input>
+    </div>
+
+    <!-- Number Input -->
+    <div class="input-group">
+      <h3>Number Input</h3>
+      <lib-input
+        type="number"
+        label="Age"
+        placeholder="Enter your age"
+        [minValue]="0"
+        [maxValue]="120"
+        [(value)]="formData.age">
+      </lib-input>
+    </div>
+
+    <!-- Search Input -->
+    <div class="input-group">
+      <h3>Search Input</h3>
+      <lib-input
+        type="search"
+        label="Search"
+        placeholder="Search anything..."
+        [(value)]="formData.search">
+      </lib-input>
+    </div>
+
+    <!-- Textarea (Text) -->
+    <div class="input-group">
+      <h3>Text Area (Text)</h3>
+      <lib-input
+        type="textarea"
+        label="Bio"
+        placeholder="Tell us about yourself"
+        [rows]="4"
+        [(value)]="formData.bio">
+      </lib-input>
+    </div>
+
+    <!-- Textarea (Number) -->
+    <div class="input-group">
+      <h3>Text Area (Number)</h3>
+      <lib-input
+        type="textarea"
+        label="Numeric Data"
+        placeholder="Enter numeric data (one per line)"
+        [rows]="4"
+        [(value)]="formData.numericData">
+      </lib-input>
+    </div>
+
+    <!-- Form Data Display -->
+    <div class="form-data">
+      <h3>Form Data</h3>
+      <pre>{{ formData | json }}</pre>
+    </div>
+  </section>
+
+  <!-- Primary Buttons Section -->
+  <!-- Demonstrates primary button variants -->
+  <section class="button-section">
+    <h2>Primary Buttons</h2>
+    
+    <!-- Default State Row -->
+    <div class="button-row">
+      <h3>Default State</h3>
+      <!-- Text-only button -->
+      <lib-button 
+        type="primary"
+        [hasIcon]="false"
+        (clicked)="onButtonClick()">
+        {{buttonText}}
+      </lib-button>
+
+      <!-- Button with icon -->
+      <lib-button 
+        type="primary"
+        [hasIcon]="true"
+        [iconSvg]="currentIcon"
+        (clicked)="onButtonClick()">
+        {{buttonText}}
+      </lib-button>
+    </div>
+
+    <!-- Disabled State Row -->
+    <div class="button-row">
+      <h3>Disabled State</h3>
+      <lib-button 
+        type="primary"
+        variant="disabled"
+        [hasIcon]="false"
+        [disabled]="true">
+        {{buttonText}}
+      </lib-button>
+
+      <lib-button 
+        type="primary"
+        variant="disabled"
+        [hasIcon]="true"
+        [iconSvg]="currentIcon"
+        [disabled]="true">
+        {{buttonText}}
+      </lib-button>
+    </div>
+  </section>
+
+  <!-- Secondary Buttons Section -->
+  <!-- Demonstrates secondary button variants -->
+  <section class="button-section">
+    <h2>Secondary Buttons</h2>
+    
+    <!-- Default State Row -->
+    <div class="button-row">
+      <h3>Default State</h3>
+      <lib-button 
+        type="secondary"
+        [hasIcon]="false"
+        (clicked)="onButtonClick()">
+        {{buttonText}}
+      </lib-button>
+
+      <lib-button 
+        type="secondary"
+        [hasIcon]="true"
+        [iconSvg]="currentIcon"
+        (clicked)="onButtonClick()">
+        {{buttonText}}
+      </lib-button>
+    </div>
+
+    <!-- Disabled State Row -->
+    <div class="button-row">
+      <h3>Disabled State</h3>
+      <lib-button 
+        type="secondary"
+        variant="disabled"
+        [hasIcon]="false"
+        [disabled]="true">
+        {{buttonText}}
+      </lib-button>
+
+      <lib-button 
+        type="secondary"
+        variant="disabled"
+        [hasIcon]="true"
+        [iconSvg]="currentIcon"
+        [disabled]="true">
+        {{buttonText}}
+      </lib-button>
+    </div>
+  </section>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

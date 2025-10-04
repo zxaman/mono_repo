@@ -1,0 +1,10 @@
+<button 
+  [class]="buttonClass"
+  [class.pressed]="isPressed" 
+  [class.disabled]="isDisabled"
+  [disabled]="isDisabled"
+  (click)="onClick()">
+  <span *ngIf="hasIcon() && iconPosition() === 'left'" class="icon left-icon" [innerHTML]="safeIconSvg"></span>
+  <ng-content></ng-content>
+  <span *ngIf="hasIcon() && iconPosition() === 'right'" class="icon right-icon" [innerHTML]="safeIconSvg"></span>
+</button>

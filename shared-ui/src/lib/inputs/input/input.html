@@ -1,0 +1,82 @@
+<div class="input-container">
+  <!-- Label -->
+  <label *ngIf="label" [for]="label" class="input-label">
+    {{ label }}
+    <span *ngIf="required" class="required-marker">*</span>
+  </label>
+
+  <!-- Input Field -->
+  <div class="input-wrapper" [ngClass]="{ 'password-wrapper': type === 'password' }">
+    <!-- Regular Input -->
+    <input *ngIf="type !== 'textarea'"
+      [type]="getEffectiveType()"
+      [id]="label"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="disabled"
+      [attr.minlength]="minLength"
+      [attr.maxlength]="maxLength"
+      [attr.min]="minValue"
+      [attr.max]="maxValue"
+      [(ngModel)]="value"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      class="input-field"
+      [ngClass]="{
+        'password-input': type === 'password',
+        'search-input': type === 'search',
+        'number-input': type === 'number'
+      }">
+
+    <!-- Textarea -->
+    <textarea *ngIf="type === 'textarea'"
+      [id]="label"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="disabled"
+      [rows]="rows"
+      [cols]="cols"
+      [attr.minlength]="minLength"
+      [attr.maxlength]="maxLength"
+      [(ngModel)]="value"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      class="textarea-field">
+    </textarea>
+
+    <!-- Password Toggle Button -->
+    <button *ngIf="type === 'password'"
+      type="button"
+      class="password-toggle"
+      (click)="togglePasswordVisibility()"
+      [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+      <!-- Show/Hide Password Icon -->
+      <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon">
+        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off-icon">
+        <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/>
+        <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/>
+        <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/>
+        <path d="m2 2 20 20"/>
+      </svg>
+    </button>
+
+    <!-- Search Icon -->
+    <svg *ngIf="type === 'search'"
+      class="search-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+  </div>
+</div>
